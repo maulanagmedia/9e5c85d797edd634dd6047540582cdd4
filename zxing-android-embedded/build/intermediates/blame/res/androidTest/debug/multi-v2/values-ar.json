@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "F:\\Gmedia\\AndroidProject\\Pullens\\zxing-android-embedded\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-ar\\values-ar.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Shinmaul\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.0.2.aar\\d336d69fbc5a9c92353e3c2e6439edee\\res\\values-ar\\values-ar.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                },
+                {
+                    "source": "F:\\Gmedia\\AndroidProject\\Pullens\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values-ar\\values-ar.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,117,167,300",
+                        "endColumns": "61,49,132,109",
+                        "endOffsets": "112,162,295,405"
+                    },
+                    "to": {
+                        "startLines": "3,4,5,6",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "156,218,268,401",
+                        "endColumns": "61,49,132,109",
+                        "endOffsets": "213,263,396,506"
+                    }
+                }
+            ]
+        }
+    ]
+}

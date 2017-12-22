@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "824971380267",
+    "firebase_url": "https://pullens-37501.firebaseio.com",
+    "project_id": "pullens-37501",
+    "storage_bucket": "pullens-37501.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824971380267:android:ac172682d7bbc07b",
+        "android_client_info": {
+          "package_name": "gmedia.net.id.pullens"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "824971380267-6afo8eeqh9i8698aft5t65auueqrq6me.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "gmedia.net.id.pullens",
+            "certificate_hash": "e975876398fd23dc0982c682e25ef27081c5dde4"
+          }
+        },
+        {
+          "client_id": "824971380267-lrc67eel8g2von30rnl4etsgc1ij15t0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5VH-Rq7i7iTwiHBFg_wZg28qSYmFNatY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "824971380267-lrc67eel8g2von30rnl4etsgc1ij15t0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
