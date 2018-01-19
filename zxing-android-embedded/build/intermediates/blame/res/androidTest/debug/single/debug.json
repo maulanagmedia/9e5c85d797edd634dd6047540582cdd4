@@ -164,11 +164,11 @@
         "source": "C:\\Users\\Shinmaul\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.0.2.aar\\d336d69fbc5a9c92353e3c2e6439edee\\res\\drawable-xhdpi-v4\\notify_panel_notification_icon_bg.png"
     },
     {
-        "merged": "F:\\Gmedia\\AndroidProject\\Pullens\\zxing-android-embedded\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_zxing_barcode_scanner.xml.flat",
-        "source": "F:\\Gmedia\\AndroidProject\\Pullens\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\layout\\zxing_barcode_scanner.xml"
-    },
-    {
         "merged": "F:\\Gmedia\\AndroidProject\\Pullens\\zxing-android-embedded\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21_notification_action.xml.flat",
         "source": "C:\\Users\\Shinmaul\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.0.2.aar\\d336d69fbc5a9c92353e3c2e6439edee\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "F:\\Gmedia\\AndroidProject\\Pullens\\zxing-android-embedded\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_zxing_barcode_scanner.xml.flat",
+        "source": "F:\\Gmedia\\AndroidProject\\Pullens\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\layout\\zxing_barcode_scanner.xml"
     }
 ]

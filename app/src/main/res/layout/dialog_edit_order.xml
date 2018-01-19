@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/input_form">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarSize="3dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_form"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/margin_small"
+                    android:paddingLeft="@dimen/margin_small"
+                    android:paddingRight="@dimen/margin_small"
+                    android:paddingBottom="@dimen/margin_tiny"
+                    android:textColor="@color/color_red"
+                    android:id="@+id/tv_title"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/margin_tiny"
+                    android:paddingLeft="@dimen/margin_small"
+                    android:paddingRight="@dimen/margin_small"
+                    android:paddingBottom="@dimen/margin_small"
+                    android:textColor="@color/color_black"
+                    android:id="@+id/tv_harga"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_width"
+                android:background="@color/color_grey"
+                android:layout_marginTop="@dimen/margin_small"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:orientation="vertical"
+                android:background="@drawable/input_form"
+                android:padding="@dimen/margin_small"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pilihan"
+                    android:textColor="@color/color_black"/>
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sp_pilihan"></Spinner>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input_form_disable"
+                    android:padding="@dimen/margin_small"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_weight="0.4"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_deactive"
+                        android:text="Harga"
+                        android:gravity="left"
+                        android:inputType="none"
+                        android:editable="false" />
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_weight="0.6"
+                        android:layout_height="wrap_content"
+                        android:hint="Harga"
+                        android:background="@color/color_deactive"
+                        android:gravity="right"
+                        android:id="@+id/edt_harga"
+                        android:inputType="none"
+                        android:editable="false" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:weightSum="1">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="0.45"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input_form"
+                    android:hint="Jumlah"
+                    android:textColor="@color/color_red"
+                    android:id="@+id/edt_jumlah"
+                    android:gravity="right"
+                    android:inputType="none"
+                    android:editable="false"
+                    android:padding="@dimen/margin_small"/>
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="0.25"
+                    android:layout_height="42dp"
+                    android:background="@drawable/input_form_disable"
+                    android:gravity="center_vertical"
+                    android:hint="Satuan"
+                    android:inputType="none"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:editable="false"
+                    android:id="@+id/edt_satuan"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:padding="@dimen/margin_small"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:layout_weight="0.3"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <ImageView
+                        android:id="@+id/iv_jml_min"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:minHeight="60dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_minus" />
+
+                    <ImageView
+                        android:id="@+id/iv_jml_plus"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_plus" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="1">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="0.8"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input_form"
+                    android:hint="Diskon"
+                    android:textColor="@color/color_blue"
+                    android:id="@+id/edt_diskon"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:padding="@dimen/margin_small"/>
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/input_form_disable"
+                    android:gravity="center_vertical"
+                    android:text="%"
+                    android:inputType="none"
+                    android:editable="false"
+                    android:id="@+id/edt_pesen"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:padding="@dimen/margin_small"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/margin_small"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input_form_disable"
+                    android:padding="@dimen/margin_small"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_weight="0.4"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_deactive"
+                        android:text="Harga Setelah Diskon"
+                        android:gravity="left"
+                        android:inputType="none"
+                        android:editable="false" />
+
+                    <EditText
+                        android:id="@+id/edt_harga_diskon"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.6"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_deactive"
+                        android:editable="false"
+                        android:gravity="right"
+                        android:hint="Harga Setelah Diskon"
+                        android:inputType="none"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:orientation="vertical"
+                android:background="@drawable/input_form"
+                android:padding="@dimen/margin_small"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jenis Order"
+                    android:textColor="@color/color_black"/>
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/rg_jenis_order"
+                    android:weightSum="2">
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Dine In"
+                        android:id="@+id/rb_dn"
+                        android:textColor="@color/color_black"
+                        android:textSize="@dimen/jenis_order"
+                        android:textStyle="bold" />
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:id="@+id/rb_ta"
+                        android:layout_height="wrap_content"
+                        android:text="Take Away"
+                        android:textColor="@color/color_black"
+                        android:textSize="@dimen/jenis_order"
+                        android:textStyle="bold" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:background="@drawable/input_form"
+                android:padding="@dimen/margin_small"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tag Meja"
+                    android:textColor="@color/color_black"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_tiny"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/margin_tiny"
+                        android:weightSum="5">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:layout_width="@dimen/cb_tag_meja"
+                                android:layout_height="@dimen/cb_tag_meja"
+                                android:background="@drawable/custom_checkbox"
+                                android:button="@null"
+                                android:textSize="@dimen/tag_meja"
+                                android:id="@+id/cb_a"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="A"
+                                android:textColor="@color/color_black"
+                                android:textSize="@dimen/tag_meja"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:layout_width="@dimen/cb_tag_meja"
+                                android:layout_height="@dimen/cb_tag_meja"
+                                android:background="@drawable/custom_checkbox"
+                                android:button="@null"
+                                android:textSize="@dimen/tag_meja"
+                                android:id="@+id/cb_b"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="B"
+                                android:textColor="@color/color_black"
+                                android:textSize="@dimen/tag_meja"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:layout_width="@dimen/cb_tag_meja"
+                                android:layout_height="@dimen/cb_tag_meja"
+                                android:background="@drawable/custom_checkbox"
+                                android:button="@null"
+                                android:textSize="@dimen/tag_meja"
+                                android:id="@+id/cb_c"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="C"
+                                android:textColor="@color/color_black"
+                                android:textSize="@dimen/tag_meja"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:layout_width="@dimen/cb_tag_meja"
+                                android:layout_height="@dimen/cb_tag_meja"
+                                android:background="@drawable/custom_checkbox"
+                                android:button="@null"
+                                android:textSize="@dimen/tag_meja"
+                                android:id="@+id/cb_d"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="D"
+                                android:textColor="@color/color_black"
+                                android:textSize="@dimen/tag_meja"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:layout_width="@dimen/cb_tag_meja"
+                                android:layout_height="@dimen/cb_tag_meja"
+                                android:background="@drawable/custom_checkbox"
+                                android:button="@null"
+                                android:textSize="@dimen/tag_meja"
+                                android:id="@+id/cb_e"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="E"
+                                android:textColor="@color/color_black"
+                                android:textSize="@dimen/tag_meja"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp"
+                        android:weightSum="5">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:layout_width="@dimen/cb_tag_meja"
+                                android:layout_height="@dimen/cb_tag_meja"
+                                android:background="@drawable/custom_checkbox"
+                                android:button="@null"
+                                android:textSize="@dimen/tag_meja"
+                                android:id="@+id/cb_f"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="F"
+                                android:textColor="@color/color_black"
+                                android:textSize="@dimen/tag_meja"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:layout_width="@dimen/cb_tag_meja"
+                                android:layout_height="@dimen/cb_tag_meja"
+                                android:background="@drawable/custom_checkbox"
+                                android:button="@null"
+                                android:textSize="@dimen/tag_meja"
+                                android:id="@+id/cb_g"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="G"
+                                android:textColor="@color/color_black"
+                                android:textSize="@dimen/tag_meja"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:layout_width="@dimen/cb_tag_meja"
+                                android:layout_height="@dimen/cb_tag_meja"
+                                android:background="@drawable/custom_checkbox"
+                                android:button="@null"
+                                android:textSize="@dimen/tag_meja"
+                                android:id="@+id/cb_h"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="H"
+                                android:textColor="@color/color_black"
+                                android:textSize="@dimen/tag_meja"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:layout_width="@dimen/cb_tag_meja"
+                                android:layout_height="@dimen/cb_tag_meja"
+                                android:background="@drawable/custom_checkbox"
+                                android:button="@null"
+                                android:textSize="@dimen/tag_meja"
+                                android:id="@+id/cb_i"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="I "
+                                android:textColor="@color/color_black"
+                                android:textSize="@dimen/tag_meja"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:layout_width="@dimen/cb_tag_meja"
+                                android:layout_height="@dimen/cb_tag_meja"
+                                android:background="@drawable/custom_checkbox"
+                                android:button="@null"
+                                android:textSize="@dimen/tag_meja"
+                                android:id="@+id/cb_j"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="J"
+                                android:textColor="@color/color_black"
+                                android:textSize="@dimen/tag_meja"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="100dp"
+                    android:background="@drawable/input_form"
+                    android:hint="Catatan"
+                    android:textColor="@color/color_red"
+                    android:id="@+id/edt_catatan"
+                    android:gravity="left"
+                    android:scrollHorizontally="false"
+                    android:inputType="textPersonName|textMultiLine"
+                    android:padding="@dimen/margin_small"
+                    android:imeOptions="flagNoExtractUi"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_vertical"
+                android:layout_marginBottom="@dimen/margin_vertical"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_small"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:weightSum="3">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ripple_selected_orange"
+                    android:text="Tutup"
+                    android:id="@+id/btn_batal"
+                    android:layout_marginRight="@dimen/margin_small"
+                    android:textColor="@color/text_color_orange"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ripple_selected_blue"
+                    android:text="Hapus"
+                    android:id="@+id/btn_hapus"
+                    android:layout_marginRight="@dimen/margin_small"
+                    android:textColor="@color/text_color_blue"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ripple_selected_red"
+                    android:text="Simpan"
+                    android:id="@+id/btn_simpan"
+                    android:textColor="@color/text_color_red"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

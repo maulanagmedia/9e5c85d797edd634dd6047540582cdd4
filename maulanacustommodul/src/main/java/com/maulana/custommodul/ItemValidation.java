@@ -150,12 +150,14 @@ public class ItemValidation {
         SimpleDateFormat sdfCustom = new SimpleDateFormat(formatDateTo);
 
         Date date1 = null;
+        String resultDate = "";
         try {
             date1 = sdf.parse(date);
+            resultDate = sdfCustom.format(date1);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return (sdfCustom.format(date1) == null) ? "" : sdfCustom.format(date1);
+        return resultDate;
     }
 
     public int dpToPx(Context context, int dp) {
@@ -644,6 +646,10 @@ public class ItemValidation {
         return String.format("%s", number).replace(",",".");
     }
 
+    public String floatToString(float number){
+        return String.format("%s", number).replace(",",".");
+    }
+
     public String parseNullString(String s){
         String result = "";
         if(s != null){
@@ -823,14 +829,19 @@ public class ItemValidation {
     //endregion
 
     public void hideSoftKey(Context context){
-        InputMethodManager inputManager =
-                (InputMethodManager) context.
-                        getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputManager.hideSoftInputFromWindow(
-                ((Activity) context).getCurrentFocus().getWindowToken(),
-                InputMethodManager.HIDE_NOT_ALWAYS); ((Activity) context).getWindow().setSoftInputMode(
-                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
-        );
+        try {
+            InputMethodManager inputManager =
+                    (InputMethodManager) context.
+                            getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputManager.hideSoftInputFromWindow(
+                    ((Activity) context).getCurrentFocus().getWindowToken(),
+                    InputMethodManager.HIDE_NOT_ALWAYS); ((Activity) context).getWindow().setSoftInputMode(
+                    WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+            );
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     public boolean isServiceRunning(Context context, Class<?> serviceClass) {

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="radius">3dp</dimen>
+    <dimen name="radius_big">6dp</dimen>
+    <dimen name="margin_vertical">16dp</dimen>
+    <dimen name="margin_horizontal">16dp</dimen>
+    <dimen name="margin_default">16dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_tiny">4dp</dimen>
+    <dimen name="margin_button">12dp</dimen>
+    <dimen name="line">1dp</dimen>
+
+    <dimen name="footer_height">30dp</dimen>
+    <dimen name="radius_small">3dp</dimen>
+    <dimen name="stroke_width">2dp</dimen>
+    <dimen name="stroke_width_small">1dp</dimen>
+    <dimen name="line_width">0.75dp</dimen>
+    <dimen name="elevation">3dp</dimen>
+    <dimen name="default_input_height">45dp</dimen>
+    <dimen name="text_subtitle">10sp</dimen>
+    <dimen name="font_title">16sp</dimen>
+    <dimen name="font_value">18sp</dimen>
+    <dimen name="font_number">20sp</dimen>
+    <dimen name="min_number">70sp</dimen>
+    <dimen name="tag_meja">20sp</dimen>
+    <dimen name="cb_tag_meja">30dip</dimen>
+    <dimen name="jenis_order">18sp</dimen>
+    <dimen name="padding_icon">4dp</dimen>
+</resources>

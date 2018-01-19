@@ -25,7 +25,9 @@ import java.util.Map;
 
 public class ApiVolley {
 
-    public ApiVolley(final Context context, JSONObject jsonBody, String requestMethod, String REST_URL, final String successDialog, final String failDialog, final int showDialogFlag, final String user, final String pass , final VolleyCallback callback){
+    public static RequestQueue requestQueue;
+
+    public ApiVolley(final Context context, JSONObject jsonBody, String requestMethod, String REST_URL, final String successDialog, final String failDialog, final int showDialogFlag, final String uid, final VolleyCallback callback){
 
         /*
         NOTE: you have to customize this class before you use it (haeder, etc)
@@ -106,9 +108,8 @@ public class ApiVolley {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("Content-Type", "application/json");
                 params.put("Client-Service", "frontend-client");
-                params.put("Auth-Key", "gmedia_finance");
-                params.put("user", user);
-                params.put("pass", pass);
+                params.put("Auth-Key", "gmedia_pullens");
+                params.put("uid", uid);
                 return params;
             }
 
@@ -130,11 +131,24 @@ public class ApiVolley {
         };
         //endregion
 
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        if(requestQueue == null){
+            requestQueue = Volley.newRequestQueue(context.getApplicationContext());
+        }
         // retry when timeout
+        /*stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                30*60*1000, *//*DefaultRetryPolicy.DEFAULT_MAX_RETRIES*//*0,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));*/
+
+        /*// Never retry when slow response
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(
-                30*60*1000, /*DefaultRetryPolicy.DEFAULT_MAX_RETRIES*/0,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+                0, -1,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));*/
+
+        // set timeout after 6 second
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                /*DefaultRetryPolicy.DEFAULT_TIMEOUT_MS * 2*/6000, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
         ));
+
         stringRequest.setShouldCache(false);
         requestQueue.add(stringRequest);
         requestQueue.getCache().clear();

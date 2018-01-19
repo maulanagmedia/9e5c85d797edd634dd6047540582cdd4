@@ -22,7 +22,7 @@ public class SessionManager {
 	int PRIVATE_MODE = 0;
 	
 	// Sharedpref file name
-	private static final String PREF_NAME = "GmediaUserFinance";
+	private static final String PREF_NAME = "GmediaPullens";
 	
 	// All Shared Preferences Keys
 	private static final String IS_LOGIN = "IsLoggedIn";
@@ -30,7 +30,8 @@ public class SessionManager {
 	public static final String TAG_EMAIL = "email";
 	public static final String TAG_NAMA = "nama";
 	public static final String TAG_USERNAME = "username";
-	public static final String TAG_PASSWORD = "password";
+	public static final String TAG_PICTURE = "picture";
+	public static final String TAG_JENIS = "jenis";
 	public static final String TAG_SAVED = "saved";
 
 	// Constructor
@@ -43,7 +44,7 @@ public class SessionManager {
 	/**
 	 * Create login session
 	 * */
-	public void createLoginSession(String uid, String email, String nama, String username, String password, String saved){
+	public void createLoginSession(String uid, String email, String nama, String username, String picture, String jenis, String saved){
 
 		editor.putBoolean(IS_LOGIN, true);
 		
@@ -55,7 +56,9 @@ public class SessionManager {
 
 		editor.putString(TAG_USERNAME, username);
 
-		editor.putString(TAG_PASSWORD, password);
+		editor.putString(TAG_PICTURE, picture);
+
+		editor.putString(TAG_JENIS, jenis);
 
 		editor.putString(TAG_SAVED, saved);
 		// commit changes
@@ -68,36 +71,38 @@ public class SessionManager {
 	public HashMap<String, String> getUserDetails(){
 		HashMap<String, String> user = new HashMap<String, String>();
 		// user nik
-		user.put(TAG_UID, pref.getString(TAG_UID, null));
+		user.put(TAG_UID, pref.getString(TAG_UID, ""));
 
-		user.put(TAG_EMAIL, pref.getString(TAG_EMAIL, null));
+		user.put(TAG_EMAIL, pref.getString(TAG_EMAIL, ""));
 
-		user.put(TAG_NAMA, pref.getString(TAG_NAMA, null));
+		user.put(TAG_NAMA, pref.getString(TAG_NAMA, ""));
 
-		user.put(TAG_USERNAME, pref.getString(TAG_USERNAME, null));
+		user.put(TAG_USERNAME, pref.getString(TAG_USERNAME, ""));
 
-		user.put(TAG_PASSWORD, pref.getString(TAG_PASSWORD, null));
+		user.put(TAG_PICTURE, pref.getString(TAG_PICTURE, ""));
 
-		user.put(TAG_SAVED, pref.getString(TAG_SAVED, null));
+		user.put(TAG_JENIS, pref.getString(TAG_JENIS, ""));
+
+		user.put(TAG_SAVED, pref.getString(TAG_SAVED, ""));
 
 		// return user
 		return user;
 	}
 
 	public String getUserInfo(String key){
-		return pref.getString(key, null);
+		return pref.getString(key, "");
+	}
+
+	public String getUid(){
+		return pref.getString(TAG_UID, "");
 	}
 
 	public String getNama(){
-		return pref.getString(TAG_NAMA, null);
+		return pref.getString(TAG_NAMA, "");
 	}
 
 	public String getUsername(){
-		return pref.getString(TAG_USERNAME, null);
-	}
-
-	public String getPassword(){
-		return pref.getString(TAG_PASSWORD, null);
+		return pref.getString(TAG_USERNAME, "");
 	}
 
 	/**

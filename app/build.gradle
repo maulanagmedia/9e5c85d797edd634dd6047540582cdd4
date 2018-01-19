@@ -6,15 +6,22 @@ android {
         applicationId "gmedia.net.id.pullens"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode 5
+        versionName '5.0'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    productFlavors {
     }
 }
 
@@ -28,9 +35,16 @@ dependencies {
     compile 'com.facebook.android:facebook-android-sdk:4.19.0'
     compile 'com.google.firebase:firebase-core:10.2.0'
     compile 'com.google.firebase:firebase-auth:10.2.0'
+    compile 'com.google.android.gms:play-services:10.2.0'
     implementation project(':maulanacustommodul')
     implementation project(':zxing-android-embedded')
+    implementation files('libs/ePOS2.jar')
 }
+
+
+
+
+
 
 
 apply plugin: 'com.google.gms.google-services'

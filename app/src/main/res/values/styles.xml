@@ -8,4 +8,29 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="AppTheme.TitleOnly">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="AppTheme.Custom.Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="colorPrimary">@color/color_white</item>
+        <item name="colorAccent">@color/color_white</item>
+        <item name="android:background">@color/color_dialog</item>
+    </style>
+
+    <style name="CustomAutoComplete">
+        <item name="android:imeOptions">actionSearch</item> <!--Search icon on soft keyboard-->
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@drawable/input_form</item>
+        <item name="android:drawableLeft">@mipmap/ic_search</item>
+    </style>
+
 </resources>

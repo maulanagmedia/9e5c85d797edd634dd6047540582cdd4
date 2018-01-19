@@ -54,7 +54,7 @@ public class ImageUtils {
     // General Image
     public void LoadRealImage(Context context, String uri, final ImageView image){
 
-        Picasso.with(context).load(Uri.parse(uri)).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).into(image);
+        Picasso.with(context).load(Uri.parse(uri)).networkPolicy(NetworkPolicy.NO_CACHE).into(image);
     }
 
     public void LoadRealImage(Context context, String uri, final ImageView image, int thumb){
@@ -65,6 +65,11 @@ public class ImageUtils {
     public void LoadRealImageNoCache(Context context, String uri, final ImageView image){
 
         Picasso.with(context).load(Uri.parse(uri)).into(image);
+    }
+
+    public void LoadCircleRealImage(Context context, String uri, final ImageView image){
+
+        Picasso.with(context).load(Uri.parse(uri)).networkPolicy(NetworkPolicy.NO_CACHE).transform(new CircleTransform()).fit().centerCrop().memoryPolicy(MemoryPolicy.NO_CACHE).into(image);
     }
 
     public void LoadRealImage(Context context, int uri, final ImageView image){
