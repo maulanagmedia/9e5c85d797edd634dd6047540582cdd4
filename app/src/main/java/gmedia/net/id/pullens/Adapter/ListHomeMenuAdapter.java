@@ -39,7 +39,8 @@ public class ListHomeMenuAdapter extends ArrayAdapter{
 
     private static class ViewHolder {
         private ImageView ivThumbnail;
-        private TextView tvItem1, tvItem2, tvItem3;
+        private TextView tvItem1, tvItem2, tvItem3, tvItem4;
+        private RatingBar rbMenu;
     }
 
     public void addMoreData(List<CustomItem> moreData){
@@ -86,6 +87,8 @@ public class ListHomeMenuAdapter extends ArrayAdapter{
             holder.tvItem1 = (TextView) convertView.findViewById(R.id.tv_item1);
             holder.tvItem2 = (TextView) convertView.findViewById(R.id.tv_item2);
             holder.tvItem3 = (TextView) convertView.findViewById(R.id.tv_item3);
+            holder.tvItem4 = (TextView) convertView.findViewById(R.id.tv_item4);
+            holder.rbMenu= (RatingBar) convertView.findViewById(R.id.rb_menu);
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
@@ -98,6 +101,9 @@ public class ListHomeMenuAdapter extends ArrayAdapter{
         holder.tvItem1.setText(itemSelected.getItem2());
         holder.tvItem2.setText(iv.ChangeToRupiahFormat(iv.parseNullDouble(itemSelected.getItem3())));
         holder.tvItem3.setText(itemSelected.getItem5());
+        float rating = iv.parseNullFloat(itemSelected.getItem7());
+        holder.tvItem4.setText(iv.floatToString(rating,"1"));
+        holder.rbMenu.setRating(rating);
 
         return convertView;
     }

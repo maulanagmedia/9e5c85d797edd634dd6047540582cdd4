@@ -98,7 +98,7 @@ public class MenuByKategoriAdapter extends RecyclerView.Adapter<MenuByKategoriAd
             holder.llThumbnail.setVisibility(View.GONE);
             holder.ivThumbnail.setVisibility(View.VISIBLE);
             ImageUtils iu = new ImageUtils();
-            iu.LoadRealImage(context, cli.getItem4(),holder.ivThumbnail);
+            iu.LoadCircleRealImage(context, cli.getItem4(),holder.ivThumbnail);
         }
 
         if(cli.getItem13().equals("1")){

@@ -698,7 +698,7 @@ public class DetailOrder extends AppCompatActivity implements ReceiveListener {
 
     private static void simpanDataPerOrder(final Context context, final CustomItem detailOrder, final String id, final int position) {
 
-        if(id.equals("")){
+        if(id == null || id.equals("")){
 
             listSelectedMenu.add(detailOrder);
             selectedMenuAdapter.notifyDataSetChanged();

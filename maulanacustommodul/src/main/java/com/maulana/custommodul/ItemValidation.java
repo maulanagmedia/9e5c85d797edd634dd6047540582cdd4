@@ -650,6 +650,10 @@ public class ItemValidation {
         return String.format("%s", number).replace(",",".");
     }
 
+    public String floatToString(float number, String digit){
+        return String.format("%."+digit+"f", number).replace(",",".");
+    }
+
     public String parseNullString(String s){
         String result = "";
         if(s != null){

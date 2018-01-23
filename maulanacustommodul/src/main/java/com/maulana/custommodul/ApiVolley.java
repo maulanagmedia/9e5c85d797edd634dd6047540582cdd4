@@ -144,9 +144,9 @@ public class ApiVolley {
                 0, -1,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
         ));*/
 
-        // set timeout after 6 second
+        // set timeout after 10 second
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(
-                /*DefaultRetryPolicy.DEFAULT_TIMEOUT_MS * 2*/6000, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+                /*DefaultRetryPolicy.DEFAULT_TIMEOUT_MS * 2*/10 * 1000, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
         ));
 
         stringRequest.setShouldCache(false);

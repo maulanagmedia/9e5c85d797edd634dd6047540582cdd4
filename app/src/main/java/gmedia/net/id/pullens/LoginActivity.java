@@ -384,15 +384,17 @@ public class LoginActivity extends RuntimePermissionsActivity implements GoogleA
                             if(iv.parseNullDouble(status) == 200){
 
                                 String message = responseAPI.getJSONObject("metadata").getString("message");
-                                session.createLoginSession(user.getUid(),user.getEmail(),user.getDisplayName(),user.getEmail(), String.valueOf(user.getPhotoUrl()), jenisLogin, "1");
-                                Toast.makeText(LoginActivity.this, message,Toast.LENGTH_LONG).show();
-                                dismissProgressDialog();
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                finish();
-                                startActivity(intent);
-                                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                            }
 
+                                if(user != null){
+                                    session.createLoginSession(user.getUid(),user.getEmail(),user.getDisplayName(),user.getEmail(), String.valueOf(user.getPhotoUrl()), jenisLogin, "1");
+                                    Toast.makeText(LoginActivity.this, message,Toast.LENGTH_LONG).show();
+                                    dismissProgressDialog();
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    finish();
+                                    startActivity(intent);
+                                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                                }
+                            }
                             dismissProgressDialog();
                         } catch (JSONException e) {
                             dismissProgressDialog();

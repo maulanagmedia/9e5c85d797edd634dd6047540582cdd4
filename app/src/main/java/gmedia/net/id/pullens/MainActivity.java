@@ -17,19 +17,26 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -60,6 +67,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gmedia.net.id.pullens.Adapter.ListHomeMenuAdapter;
+import gmedia.net.id.pullens.FavoriteMenu.FavMakanan;
+import gmedia.net.id.pullens.FavoriteMenu.FavMinuman;
 import gmedia.net.id.pullens.RiawayatOrder.RiwayatOrder;
 import gmedia.net.id.pullens.StartOrder.StartOrderActivity;
 import gmedia.net.id.pullens.Utils.SavedMejaManager;
@@ -99,15 +108,25 @@ public class MainActivity extends RuntimePermissionsActivity {
     private boolean isScanBarcode = false;
     private Context context;
     private AlertDialog alertRating;
+    private boolean isDialogOpen = false;
+    private int[] tabIcons = {
+            R.drawable.ic_rice_bowl,
+            R.drawable.ic_cofee
+    };
+
+    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(getResources().getDrawable(R.mipmap.ic_logout));
+        getSupportActionBar().setHomeAsUpIndicator(getResources().getDrawable(R.drawable.ic_logout));
         /*getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.custom_appbar);
 
@@ -172,6 +191,37 @@ public class MainActivity extends RuntimePermissionsActivity {
         btnRefresh = (Button) findViewById(R.id.btn_refresh);
         LayoutInflater li = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         footerList = li.inflate(R.layout.footer_list, null);
+
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
+        LinearLayout tabOne = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+        TextView tvTabOne =  (TextView) tabOne.findViewById(R.id.tab);
+        ImageView ivTabOne =  (ImageView) tabOne.findViewById(R.id.iv);
+        tvTabOne.setText("MAKANAN");
+        ivTabOne.setImageDrawable(getResources().getDrawable(tabIcons[0]));
+
+        /*TextView tabOne = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+        tabOne.setText("MAKANAN");
+        tabOne.setCompoundDrawablesWithIntrinsicBounds(tabIcons[0], 0, 0, 0);*/
+        tabLayout.getTabAt(0).setCustomView(tabOne);
+
+        LinearLayout tabTwo = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+        TextView tvTabTwo =  (TextView) tabTwo.findViewById(R.id.tab);
+        ImageView ivTabTwo =  (ImageView) tabTwo.findViewById(R.id.iv);
+        tvTabTwo.setText("MINUMAN");
+        ivTabTwo.setImageDrawable(getResources().getDrawable(tabIcons[1]));
+
+        /*TextView tabTwo = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+        tabTwo.setText("MINUMAN");
+        tabTwo.setCompoundDrawablesWithIntrinsicBounds(tabIcons[1], 0, 0, 0);*/
+        tabLayout.getTabAt(1).setCustomView(tabTwo);
 
         currentSSIDName = "";
         currentSSIDMac = "";
@@ -251,10 +301,8 @@ public class MainActivity extends RuntimePermissionsActivity {
     protected void onResume() {
         super.onResume();
 
-        isLoading = false;
-        startIndex = 0;
-        keyword = "";
-        getHotMenu();
+        isScanBarcode = false;
+        //getServer();
     }
 
     private void refreshAPinfo(Context context) {
@@ -350,6 +398,7 @@ public class MainActivity extends RuntimePermissionsActivity {
                         if(jsonArray.length() > 0){
                             for(int i = 0; i < jsonArray.length(); i++){
 
+                                isScanBarcode = true;
                                 getServer();
                                 break;
                             }
@@ -553,10 +602,11 @@ public class MainActivity extends RuntimePermissionsActivity {
                                 }
                             }else{
 
+                                pbLoading.setVisibility(View.GONE);
                                 isLoading = false;
                                 startIndex = 0;
                                 keyword = "";
-                                getHotMenu();
+                                //getHotMenu();
                             }
                         }
                     }else{
@@ -742,6 +792,7 @@ public class MainActivity extends RuntimePermissionsActivity {
         pbLoading.setVisibility(View.VISIBLE);
         masterList = new ArrayList<>();
 
+        startIndex = 0;
         JSONObject jBody = new JSONObject();
         try {
             jBody.put("keyword", keyword);
@@ -794,6 +845,7 @@ public class MainActivity extends RuntimePermissionsActivity {
 
     private void setHomeMenuAdapter(List<CustomItem> listItem){
 
+        isDialogOpen = false;
         lvListMenu.setAdapter(null);
 
         if(listItem != null && listItem.size() > 0){
@@ -832,13 +884,66 @@ public class MainActivity extends RuntimePermissionsActivity {
 
                 CustomItem item = (CustomItem) adapterView.getItemAtPosition(i);
 
-                getDetailRatingMenu(item.getItem1());
+                if(!isDialogOpen){
+                    getPenjualanByUid(item.getItem1(), item.getItem2());
+                }
+
+            }
+        });
+    }
+
+    private void getPenjualanByUid(final String id, final String namaMenu) {
+
+        isDialogOpen = true;
+        pbLoading.setVisibility(View.VISIBLE);
+        JSONObject jBody = new JSONObject();
+        try {
+            jBody.put("uid", session.getUid());
+            jBody.put("kdbrg", id);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        ApiVolley request = new ApiVolley(MainActivity.this, jBody, "POST", serverURL.getPenjualanByUid(), "", "", 0, session.getUid(), new ApiVolley.VolleyCallback() {
+            @Override
+            public void onSuccess(String result) {
+
+                pbLoading.setVisibility(View.GONE);
+                isDialogOpen = false;
+                try {
+                    JSONObject response = new JSONObject(result);
+                    String status = response.getJSONObject("metadata").getString("status");
+
+                    if(iv.parseNullInteger(status) == 200){
+
+                        JSONArray jsonArray = response.getJSONArray("response");
+                        if(jsonArray.length()>0){
+
+                            getDetailRatingMenu(id);
+                        }else{
+                            showDialog(MainActivity.this, 3, "Anda hanya dapat memberikan rating setelah memesan "+ namaMenu);
+                        }
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(MainActivity.this, "Terjadi kesalahan saat memuat data", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onError(String result) {
+
+                isDialogOpen = false;
+                pbLoading.setVisibility(View.GONE);
+                Toast.makeText(MainActivity.this, "Terjadi kesalahan saat memuat data", Toast.LENGTH_LONG).show();
             }
         });
     }
 
     private void getDetailRatingMenu(final String id) {
 
+        isDialogOpen = true;
         pbLoading.setVisibility(View.VISIBLE);
         JSONObject jBody = new JSONObject();
         try {
@@ -853,6 +958,7 @@ public class MainActivity extends RuntimePermissionsActivity {
             public void onSuccess(String result) {
 
                 pbLoading.setVisibility(View.GONE);
+                isDialogOpen = false;
                 try {
                     JSONObject response = new JSONObject(result);
                     String status = response.getJSONObject("metadata").getString("status");
@@ -904,6 +1010,11 @@ public class MainActivity extends RuntimePermissionsActivity {
                                 @Override
                                 public void onClick(View view) {
 
+                                    if(rbMenu.getRating() == 0){
+                                        Toast.makeText(MainActivity.this, "Mohon berikan rating anda", Toast.LENGTH_LONG).show();
+                                        return;
+                                    }
+
                                     String rating = iv.floatToString(rbMenu.getRating());
                                     JSONObject jBody = new JSONObject();
                                     try {
@@ -931,6 +1042,7 @@ public class MainActivity extends RuntimePermissionsActivity {
 
             @Override
             public void onError(String result) {
+                isDialogOpen = false;
                 pbLoading.setVisibility(View.GONE);
                 Toast.makeText(MainActivity.this, "Terjadi kesalahan saat memuat data", Toast.LENGTH_LONG).show();
             }
@@ -965,6 +1077,8 @@ public class MainActivity extends RuntimePermissionsActivity {
                     if(iv.parseNullInteger(status) == 200){
 
                         if(alertRating != null) alertRating.dismiss();
+
+                        getHotMenu();
                     }
 
                 } catch (JSONException e) {
@@ -987,6 +1101,30 @@ public class MainActivity extends RuntimePermissionsActivity {
             final AlertDialog.Builder builder = new AlertDialog.Builder(context);
             LayoutInflater inflater = (LayoutInflater) ((Activity) context).getSystemService(LAYOUT_INFLATER_SERVICE);
             View viewDialog = inflater.inflate(R.layout.layout_failed, null);
+            builder.setView(viewDialog);
+            builder.setCancelable(false);
+
+            final TextView tvText1 = (TextView) viewDialog.findViewById(R.id.tv_text1);
+            tvText1.setText(message);
+            final Button btnOK = (Button) viewDialog.findViewById(R.id.btn_ok);
+
+            final AlertDialog alert = builder.create();
+            alert.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+            btnOK.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view2) {
+
+                    if(alert != null) alert.dismiss();
+                }
+            });
+
+            alert.show();
+        }else if(state == 3){
+
+            final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            LayoutInflater inflater = (LayoutInflater) ((Activity) context).getSystemService(LAYOUT_INFLATER_SERVICE);
+            View viewDialog = inflater.inflate(R.layout.layout_warning, null);
             builder.setView(viewDialog);
             builder.setCancelable(false);
 
@@ -1128,9 +1266,15 @@ public class MainActivity extends RuntimePermissionsActivity {
             @Override
             public boolean onQueryTextSubmit(String queryText) {
 
-                keyword = queryText;
+                /*keyword = queryText;
                 startIndex = 0;
-                getHotMenu();
+                getHotMenu();*/
+                FavMakanan.keyword = queryText;
+                FavMinuman.keyword = queryText;
+
+                FavMakanan.getServer();
+                FavMinuman.getServer();
+
                 iv.hideSoftKey(MainActivity.this);
                 return true;
             }
@@ -1138,9 +1282,15 @@ public class MainActivity extends RuntimePermissionsActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
 
-                keyword = newText;
+                /*keyword = newText;
                 startIndex = 0;
-                getHotMenu();
+                getHotMenu();*/
+
+                FavMakanan.keyword = newText;
+                FavMinuman.keyword = newText;
+
+                FavMakanan.getServer();
+                FavMinuman.getServer();
 
                 return true;
             }
@@ -1185,5 +1335,30 @@ public class MainActivity extends RuntimePermissionsActivity {
                 doubleBackToExitPressedOnce=false;
             }
         }, timerClose);
+    }
+
+    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
+        public SectionsPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            // getItem is called to instantiate the fragment for the given page.
+            // Return a PlaceholderFragment (defined as a static inner class below).
+            if(position == 0){
+
+                return new FavMakanan();
+            }else{
+                return new FavMinuman();
+            }
+        }
+
+        @Override
+        public int getCount() {
+            // Show 3 total pages.
+            return 2;
+        }
     }
 }

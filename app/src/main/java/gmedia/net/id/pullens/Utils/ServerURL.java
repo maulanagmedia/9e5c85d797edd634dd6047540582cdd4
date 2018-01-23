@@ -12,8 +12,8 @@ public class ServerURL {
     private String baseURLLocal = "";
     private ServerLocalManager localServer;
 
-    //private static final String baseURL = "http://pullens.gmedia.bz/";
-    private static final String baseURL = "http://192.168.12.147/pullens/";
+    private static final String baseURL = "http://pullens.gmedia.bz/";
+    //private static final String baseURL = "http://192.168.12.147/pullens/";
 
     public static final String login = baseURL + "api_user/auth/login/";
     public static final String getHomeMenu = baseURL + "api_user/dashboard/get_home_menu/";
@@ -45,6 +45,7 @@ public class ServerURL {
     public String updatePenjualan(){ return baseURLLocal + "userorder/update_penjualan/";}
     public String getCurrentOrder(){ return baseURLLocal + "userorder/get_current_order/";}
     public String getHotMenu(){ return baseURLLocal + "userorder/get_hot_menu/";}
+    public String getPenjualanByUid(){ return baseURLLocal + "userorder/get_penjualan_by_uid/";}
 
     public String getRiwayatOrder(){ return baseURLLocal + "userriwayat/get_riwayat_transaksi/";}
     public String getDetailRiwayatOrder(){ return baseURLLocal + "userriwayat/get_detail_riwayat_transaksi/";}
