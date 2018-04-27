@@ -388,6 +388,7 @@ public class MainActivity extends RuntimePermissionsActivity {
             @Override
             public void onSuccess(String result) {
 
+                pbLoading.setVisibility(View.GONE);
                 try {
                     JSONObject response = new JSONObject(result);
                     String status = response.getJSONObject("metadata").getString("status");
@@ -404,7 +405,6 @@ public class MainActivity extends RuntimePermissionsActivity {
                             }
                         }else{
 
-                            pbLoading.setVisibility(View.GONE);
                             Snackbar.make(findViewById(android.R.id.content), "Mohon sambungkan wifi anda ke AP "+ getResources().getString(R.string.ssid_name),
                                     Snackbar.LENGTH_INDEFINITE).setAction("OK",
                                     new View.OnClickListener() {
@@ -421,12 +421,10 @@ public class MainActivity extends RuntimePermissionsActivity {
                         wifi.setWifiEnabled(true);
                         Toast.makeText(MainActivity.this, "Mohon sambungkan wifi anda ke AP "+ getResources().getString(R.string.ssid_name), Toast.LENGTH_LONG).show();
                         startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK));
-                        pbLoading.setVisibility(View.GONE);
                     }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    pbLoading.setVisibility(View.GONE);
                     Toast.makeText(MainActivity.this, "Terjadi kesalahan saat memuat data", Toast.LENGTH_LONG).show();
                 }
             }
@@ -455,6 +453,7 @@ public class MainActivity extends RuntimePermissionsActivity {
             @Override
             public void onSuccess(String result) {
 
+                pbLoading.setVisibility(View.GONE);
                 try {
                     JSONObject response = new JSONObject(result);
                     String status = response.getJSONObject("metadata").getString("status");
@@ -470,7 +469,6 @@ public class MainActivity extends RuntimePermissionsActivity {
                             }
                         }else{
 
-                            pbLoading.setVisibility(View.GONE);
                             Snackbar.make(findViewById(android.R.id.content), "Mohon sambungkan wifi anda ke AP "+ getResources().getString(R.string.ssid_name),
                                     Snackbar.LENGTH_INDEFINITE).setAction("OK",
                                     new View.OnClickListener() {
@@ -487,12 +485,10 @@ public class MainActivity extends RuntimePermissionsActivity {
                         wifi.setWifiEnabled(true);
                         Toast.makeText(MainActivity.this, "Mohon sambungkan wifi anda ke AP "+ getResources().getString(R.string.ssid_name), Toast.LENGTH_LONG).show();
                         startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK));
-                        pbLoading.setVisibility(View.GONE);
                     }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    pbLoading.setVisibility(View.GONE);
                     Toast.makeText(MainActivity.this, "Terjadi kesalahan saat memuat data", Toast.LENGTH_LONG).show();
                 }
             }
@@ -521,6 +517,7 @@ public class MainActivity extends RuntimePermissionsActivity {
             @Override
             public void onSuccess(String result) {
 
+                pbLoading.setVisibility(View.GONE);
                 try {
                     JSONObject response = new JSONObject(result);
                     String status = response.getJSONObject("metadata").getString("status");
@@ -536,7 +533,6 @@ public class MainActivity extends RuntimePermissionsActivity {
                             }
                         }else{
 
-                            pbLoading.setVisibility(View.GONE);
                             Snackbar.make(findViewById(android.R.id.content), "Mohon sambungkan wifi anda ke AP "+ getResources().getString(R.string.ssid_name),
                                     Snackbar.LENGTH_INDEFINITE).setAction("OK",
                                     new View.OnClickListener() {
@@ -553,12 +549,10 @@ public class MainActivity extends RuntimePermissionsActivity {
                         wifi.setWifiEnabled(true);
                         Toast.makeText(MainActivity.this, "Mohon sambungkan wifi anda ke AP "+ getResources().getString(R.string.ssid_name), Toast.LENGTH_LONG).show();
                         startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK));
-                        pbLoading.setVisibility(View.GONE);
                     }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    pbLoading.setVisibility(View.GONE);
                     Toast.makeText(MainActivity.this, "Terjadi kesalahan saat memuat data", Toast.LENGTH_LONG).show();
                 }
             }
@@ -579,6 +573,7 @@ public class MainActivity extends RuntimePermissionsActivity {
             @Override
             public void onSuccess(String result) {
 
+                pbLoading.setVisibility(View.GONE);
                 try {
                     JSONObject response = new JSONObject(result);
                     String status = response.getJSONObject("metadata").getString("status");
@@ -602,20 +597,16 @@ public class MainActivity extends RuntimePermissionsActivity {
                                 }
                             }else{
 
-                                pbLoading.setVisibility(View.GONE);
                                 isLoading = false;
                                 startIndex = 0;
                                 keyword = "";
                                 //getHotMenu();
                             }
                         }
-                    }else{
-                        pbLoading.setVisibility(View.GONE);
                     }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    pbLoading.setVisibility(View.GONE);
                     Toast.makeText(MainActivity.this, "Terjadi kesalahan saat memuat data", Toast.LENGTH_LONG).show();
                 }
             }
@@ -636,6 +627,7 @@ public class MainActivity extends RuntimePermissionsActivity {
             @Override
             public void onSuccess(String result) {
 
+                pbLoading.setVisibility(View.GONE);
                 try {
                     JSONObject response = new JSONObject(result);
                     String status = response.getJSONObject("metadata").getString("status");
@@ -651,17 +643,14 @@ public class MainActivity extends RuntimePermissionsActivity {
                             openScanBarcode();
                         }else{
 
-                            pbLoading.setVisibility(View.GONE);
                             Toast.makeText(MainActivity.this, "Server tidak ditemukan, mohon coba kembali", Toast.LENGTH_LONG).show();
                         }
                     }else{
-                        pbLoading.setVisibility(View.GONE);
                         Toast.makeText(MainActivity.this, "Server tidak ditemukan, mohon coba kembali", Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    pbLoading.setVisibility(View.GONE);
                     Toast.makeText(MainActivity.this, "Terjadi kesalahan saat memuat data", Toast.LENGTH_LONG).show();
                 }
             }
@@ -682,6 +671,7 @@ public class MainActivity extends RuntimePermissionsActivity {
             @Override
             public void onSuccess(String result) {
 
+                pbLoading.setVisibility(View.GONE);
                 try {
                     JSONObject response = new JSONObject(result);
                     String status = response.getJSONObject("metadata").getString("status");
@@ -699,13 +689,10 @@ public class MainActivity extends RuntimePermissionsActivity {
                             keyword = "";
                             getHotMenu();
                         }
-                    }else{
-                        pbLoading.setVisibility(View.GONE);
                     }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    pbLoading.setVisibility(View.GONE);
                     Toast.makeText(MainActivity.this, "Terjadi kesalahan saat memuat data", Toast.LENGTH_LONG).show();
                 }
             }
@@ -734,6 +721,7 @@ public class MainActivity extends RuntimePermissionsActivity {
             @Override
             public void onSuccess(String result) {
 
+                pbLoading.setVisibility(View.GONE);
                 String message = "Terjadi kesalahan saat memuat data, mohon ulangi kembali";
                 try {
                     JSONObject response = new JSONObject(result);
@@ -759,10 +747,8 @@ public class MainActivity extends RuntimePermissionsActivity {
                         startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK));
                     }
 
-                    pbLoading.setVisibility(View.GONE);
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    pbLoading.setVisibility(View.GONE);
                     Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
                 }
             }
@@ -806,6 +792,7 @@ public class MainActivity extends RuntimePermissionsActivity {
             @Override
             public void onSuccess(String result) {
 
+                pbLoading.setVisibility(View.GONE);
                 try {
                     JSONObject response = new JSONObject(result);
                     String status = response.getJSONObject("metadata").getString("status");
@@ -822,12 +809,10 @@ public class MainActivity extends RuntimePermissionsActivity {
                     }
 
                     setHomeMenuAdapter(masterList);
-                    pbLoading.setVisibility(View.GONE);
                     btnRefresh.setVisibility(View.GONE);
                 } catch (JSONException e) {
                     e.printStackTrace();
                     setHomeMenuAdapter(null);
-                    pbLoading.setVisibility(View.GONE);
                     Toast.makeText(MainActivity.this, "Terjadi kesalahan saat memuat data", Toast.LENGTH_LONG).show();
                     btnRefresh.setVisibility(View.VISIBLE);
                 }
