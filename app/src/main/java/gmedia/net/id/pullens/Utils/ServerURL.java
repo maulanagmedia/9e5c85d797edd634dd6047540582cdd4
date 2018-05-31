@@ -12,8 +12,8 @@ public class ServerURL {
     private String baseURLLocal = "";
     private ServerLocalManager localServer;
 
-    private static final String baseURL = "http://pullens.gmedia.bz/";
-    //private static final String baseURL = "http://192.168.12.147/pullens/";
+    //private static final String baseURL = "http://pullens.gmedia.bz/";
+    private static final String baseURL = "http://103.255.240.2/pullens/";
 
     public static final String login = baseURL + "api_user/auth/login/";
     public static final String getHomeMenu = baseURL + "api_user/dashboard/get_home_menu/";
